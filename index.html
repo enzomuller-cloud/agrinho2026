@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte - Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header com Navegação -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Agro Forte</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#praticas">Práticas</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="animate-text">Agro Forte</h1>
+            <p class="animate-text-delay">Produzindo com responsabilidade, colhendo um <span class="highlight">futuro sustentável</span></p>
+            <button class="btn-primary" onclick="scrollToSection('sobre')">
+                Descubra Mais <i class="fas fa-arrow-down"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 class="section-title">Nossa Missão</h2>
+            <div class="sobre-grid">
+                <div class="sobre-texto">
+                    <p>A agropecuária sustentável é o caminho para alimentar o mundo sem comprometer as próximas gerações. Unimos tecnologia tradicional e inovação para criar um sistema produtivo que respeita o meio ambiente, valoriza o produtor rural e garante segurança alimentar.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number" data-target="500">0</span>
+                            <span class="stat-label">Hectares Preservados</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="2000">0</span>
+                            <span class="stat-label">Famílias Beneficiadas</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="150">0</span>
+                            <span class="stat-label">Projetos Sustentáveis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-imagem">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop" alt="Agricultura sustentável">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Práticas Sustentáveis -->
+    <section id="praticas" class="praticas">
+        <div class="container">
+            <h2 class="section-title">Práticas Sustentáveis</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Irrigação Eficiente</h3>
+                    <p>Utilizamos sistemas de gotejamento e captação de água da chuva, reduzindo o consumo em até 60%.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Plantio Direto</h3>
+                    <p>Técnica que preserva a estrutura do solo, evita erosão e sequestra carbono da atmosfera.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>Energia Limpa</h3>
+                    <p>Implementação de painéis solares e biodigestores para reduzir emissões de carbono.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Economia Circular</h3>
+                    <p>Aproveitamento integral de resíduos orgânicos para produção de biofertilizantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <div class="projetos-grid">
+                <div class="projeto-item">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" alt="Reflorestamento">
+                    <div class="projeto-info">
+                        <h3>Reflorestamento de Nascentes</h3>
+                        <p>Recuperação de 50 nascentes em áreas de produção agrícola.</p>
+                        <span class="projeto-status">Em andamento</span>
+                    </div>
+                </div>
+                <div class="projeto-item">
+                    <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=400&h=300&fit=crop" alt="Agricultura Regenerativa">
+                    <div class="projeto-info">
+                        <h3>Agricultura Regenerativa</h3>
+                        <p>Capacitação de 300 famílias em técnicas regenerativas.</p>
+                        <span class="projeto-status">Concluído</span>
+                    </div>
+                </div>
+                <div class="projeto-item">
+                    <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=400&h=300&fit=crop" alt="Bioenergia">
+                    <div class="projeto-info">
+                        <h3>Bioenergia no Campo</h3>
+                        <p>Implantação de biodigestores em 20 propriedades rurais.</p>
+                        <span class="projeto-status">Planejamento</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Receba Nossas Novidades</h2>
+                <p>Fique por dentro das práticas sustentáveis e projetos inovadores</p>
+                <form id="newsletterForm">
+                    <div class="input-group">
+                        <input type="email" id="emailInput" placeholder="Seu melhor e-mail" required>
+                        <button type="submit">Inscrever-se</button>
+                    </div>
+                    <div id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-leaf"></i> Agro Forte</h3>
+                    <p>Cultivando o presente, preservando o futuro.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> contato@agroforte.com</p>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Parceiros</h4>
+                    <ul>
+                        <li>Embrapa</li>
+                        <li>Senar</li>
+                        <li>Instituto Agro</li>
+                        <li>Sebrae</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Agro Forte - Todos os direitos reservados</p>
+                <p id="lastUpdate"></p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
