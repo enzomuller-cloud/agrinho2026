@@ -2,14 +2,453 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte - Futuro Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Agro Forte - Sustentabilidade que Transforma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a2e1f;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --verde-principal: #2d6a2e;
+            --verde-claro: #4c9f4e;
+            --verde-escuro: #1b4d1c;
+            --branco: #fefefe;
+            --cinza-claro: #f4f9f4;
+            --cinza-texto: #2c3e2b;
+            --sombra: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header */
+        .header {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--verde-principal);
+        }
+        .logo i {
+            font-size: 2rem;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1a3b1a;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover {
+            color: var(--verde-principal);
+            border-bottom: 2px solid var(--verde-principal);
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--verde-escuro);
+            border-radius: 3px;
+        }
+        @media (max-width: 800px) {
+            .hamburger { display: flex; }
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+        }
+
+        /* hero */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(135deg, rgba(30, 60, 30, 0.75), rgba(20, 45, 20, 0.85)), url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=900&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            color: #f0f7e6;
+            margin: 1rem 0;
+        }
+        .highlight {
+            color: #c0f0b0;
+            font-weight: 700;
+        }
+        .btn-primary {
+            background: var(--verde-principal);
+            border: none;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover {
+            background: var(--verde-escuro);
+            transform: scale(1.02);
+        }
+
+        /* section titles */
+        .section-title {
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--verde-escuro);
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--verde-claro);
+            margin: 0.8rem auto 0;
+            border-radius: 4px;
+        }
+
+        /* sobre */
+        .sobre {
+            padding: 80px 0;
+            background: var(--cinza-claro);
+        }
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .sobre-texto p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        .stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--verde-principal);
+        }
+        .sobre-imagem img {
+            width: 100%;
+            border-radius: 32px;
+            box-shadow: var(--sombra);
+        }
+
+        /* ========== CARDS COM FLIP (PRÁTICAS SUSTENTÁVEIS) ========== */
+        .praticas {
+            padding: 80px 0;
+            background: white;
+        }
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        /* card flip container */
+        .flip-card {
+            background-color: transparent;
+            width: 280px;
+            height: 360px;
+            perspective: 1500px;
+            cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            border-radius: 28px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        /* frente e verso */
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 28px;
+            padding: 1.8rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .card-front {
+            background: white;
+            border: 1px solid #e0f0e0;
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        .card-front i {
+            font-size: 3.2rem;
+            color: var(--verde-principal);
+            margin-bottom: 1.2rem;
+        }
+        .card-front h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--verde-escuro);
+        }
+        .card-front p {
+            color: #2f4d2e;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .card-back {
+            background: linear-gradient(145deg, #e9f5e6, #d9eed4);
+            transform: rotateY(180deg);
+            color: #1b3b1a;
+            text-align: left;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+        .card-back h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--verde-escuro);
+            border-left: 5px solid var(--verde-principal);
+            padding-left: 12px;
+        }
+        .card-back p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+        }
+        .card-back i {
+            font-size: 2rem;
+            color: var(--verde-principal);
+            margin-bottom: 0.8rem;
+        }
+        .flip-hint {
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            background: rgba(45,106,46,0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        @media (max-width: 680px) {
+            .flip-card {
+                width: 260px;
+                height: 380px;
+            }
+        }
+
+        /* projetos */
+        .projetos {
+            padding: 80px 0;
+            background: var(--cinza-claro);
+        }
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .projeto-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: 0.2s;
+        }
+        .projeto-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .projeto-info {
+            padding: 1.5rem;
+        }
+        .projeto-status {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: var(--verde-claro);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+
+        /* newsletter */
+        .newsletter {
+            background: var(--verde-escuro);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .newsletter-content h2 {
+            font-size: 2rem;
+        }
+        .input-group {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto 0;
+            gap: 8px;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 14px;
+            border-radius: 60px;
+            border: none;
+            font-size: 1rem;
+        }
+        .input-group button {
+            background: #ffb74d;
+            border: none;
+            padding: 0 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #1e3a1e;
+            cursor: pointer;
+        }
+        #formMessage {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* footer */
+        .footer {
+            background: #0f2812;
+            color: #cdddc5;
+            padding: 3rem 0 1rem;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .footer-section h3, .footer-section h4 {
+            color: #c4e6b0;
+            margin-bottom: 1rem;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.4rem;
+            margin-right: 15px;
+            transition: 0.2s;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #2d5530;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--verde-principal);
+            border: none;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 30px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            z-index: 99;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 820px) {
+            .sobre-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 { font-size: 2.6rem; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header com Navegação -->
     <header class="header">
         <nav class="navbar">
             <div class="logo">
@@ -31,19 +470,14 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="animate-text">Agro Forte</h1>
-            <p class="animate-text-delay">Produzindo com responsabilidade, colhendo um <span class="highlight">futuro sustentável</span></p>
-            <button class="btn-primary" onclick="scrollToSection('sobre')">
-                Descubra Mais <i class="fas fa-arrow-down"></i>
-            </button>
+            <h1>Agro Forte</h1>
+            <p>Produzindo com responsabilidade, colhendo um <span class="highlight">futuro sustentável</span></p>
+            <button class="btn-primary" onclick="scrollToSection('sobre')">Descubra Mais <i class="fas fa-arrow-down"></i></button>
         </div>
     </section>
 
-    <!-- Sobre Section -->
     <section id="sobre" class="sobre">
         <div class="container">
             <h2 class="section-title">Nossa Missão</h2>
@@ -51,18 +485,9 @@
                 <div class="sobre-texto">
                     <p>A agropecuária sustentável é o caminho para alimentar o mundo sem comprometer as próximas gerações. Unimos tecnologia tradicional e inovação para criar um sistema produtivo que respeita o meio ambiente, valoriza o produtor rural e garante segurança alimentar.</p>
                     <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number" data-target="500">0</span>
-                            <span class="stat-label">Hectares Preservados</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-target="2000">0</span>
-                            <span class="stat-label">Famílias Beneficiadas</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-target="150">0</span>
-                            <span class="stat-label">Projetos Sustentáveis</span>
-                        </div>
+                        <div class="stat"><span class="stat-number" data-target="520">0</span><span class="stat-label"> Hectares Preservados</span></div>
+                        <div class="stat"><span class="stat-number" data-target="2150">0</span><span class="stat-label"> Famílias Beneficiadas</span></div>
+                        <div class="stat"><span class="stat-number" data-target="168">0</span><span class="stat-label"> Projetos Sustentáveis</span></div>
                     </div>
                 </div>
                 <div class="sobre-imagem">
@@ -72,69 +497,91 @@
         </div>
     </section>
 
-    <!-- Práticas Sustentáveis -->
+    <!-- PRÁTICAS SUSTENTÁVEIS COM FLIP CARD -->
     <section id="praticas" class="praticas">
         <div class="container">
             <h2 class="section-title">Práticas Sustentáveis</h2>
             <div class="cards-grid">
-                <div class="card">
-                    <i class="fas fa-tint"></i>
-                    <h3>Irrigação Eficiente</h3>
-                    <p>Utilizamos sistemas de gotejamento e captação de água da chuva, reduzindo o consumo em até 60%.</p>
+                <!-- Card 1: Irrigação Eficiente -->
+                <div class="flip-card" data-card="1">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-tint"></i>
+                            <h3>Irrigação Eficiente</h3>
+                            <p>Utilizamos sistemas de gotejamento e captação de água da chuva, reduzindo o consumo em até 60%.</p>
+                            <span class="flip-hint"><i class="fas fa-undo-alt"></i> Clique para detalhes</span>
+                        </div>
+                        <div class="card-back">
+                            <i class="fas fa-water"></i>
+                            <h4>💧 Irrigação Inteligente</h4>
+                            <p>A irrigação por gotejamento reduz perdas por evaporação e escoamento superficial. Captamos água da chuva em cisternas de até 100 mil litros e utilizamos sensores de umidade do solo. Essa tecnologia garante economia hídrica de até 60%, mantendo alta produtividade e evitando o estresse hídrico das culturas. Além disso, a automação reduz custos com energia e mão de obra.</p>
+                            <p style="margin-top: 12px;"><strong>Impacto ambiental:</strong> preservação de nascentes e menor captação de rios.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <i class="fas fa-seedling"></i>
-                    <h3>Plantio Direto</h3>
-                    <p>Técnica que preserva a estrutura do solo, evita erosão e sequestra carbono da atmosfera.</p>
+                <!-- Card 2: Plantio Direto -->
+                <div class="flip-card" data-card="2">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-seedling"></i>
+                            <h3>Plantio Direto</h3>
+                            <p>Técnica que preserva a estrutura do solo, evita erosão e sequestra carbono da atmosfera.</p>
+                            <span class="flip-hint"><i class="fas fa-undo-alt"></i> Clique para detalhes</span>
+                        </div>
+                        <div class="card-back">
+                            <i class="fas fa-globe-americas"></i>
+                            <h4>🌾 Plantio Direto na Palha</h4>
+                            <p>O sistema de plantio direto (SPD) revoluciona o solo: sem revolvimento, mantemos a palhada da cultura anterior como cobertura viva. Isso evita erosão, aumenta matéria orgânica (até 2,5% ao ano) e sequestra carbono da atmosfera, mitigando gases de efeito estufa. Também reduz emissões de CO₂ do maquinário (menos passagens de implementos). Um solo mais saudável significa maior infiltração e retenção de água.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <i class="fas fa-solar-panel"></i>
-                    <h3>Energia Limpa</h3>
-                    <p>Implementação de painéis solares e biodigestores para reduzir emissões de carbono.</p>
+                <!-- Card 3: Energia Limpa -->
+                <div class="flip-card" data-card="3">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-solar-panel"></i>
+                            <h3>Energia Limpa</h3>
+                            <p>Implementação de painéis solares e biodigestores para reduzir emissões de carbono.</p>
+                            <span class="flip-hint"><i class="fas fa-undo-alt"></i> Clique para detalhes</span>
+                        </div>
+                        <div class="card-back">
+                            <i class="fas fa-leaf"></i>
+                            <h4>☀️ Energia + Biogás</h4>
+                            <p>Painéis fotovoltaicos geram energia renovável para irrigação e resfriamento, reduzindo a pegada de carbono em até 45%. Já os biodigestores convertem dejetos animais e resíduos orgânicos em biogás (que gera eletricidade ou calor) e biofertilizante de alta qualidade. Um biodigestor de 20 m³ evita a emissão de 1,5 tonelada de metano/ano e produz energia suficiente para uma pequena propriedade.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <i class="fas fa-recycle"></i>
-                    <h3>Economia Circular</h3>
-                    <p>Aproveitamento integral de resíduos orgânicos para produção de biofertilizantes.</p>
+                <!-- Card 4: Economia Circular -->
+                <div class="flip-card" data-card="4">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-recycle"></i>
+                            <h3>Economia Circular</h3>
+                            <p>Aproveitamento integral de resíduos orgânicos para produção de biofertilizantes.</p>
+                            <span class="flip-hint"><i class="fas fa-undo-alt"></i> Clique para detalhes</span>
+                        </div>
+                        <div class="card-back">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>🔄 Fechando ciclos</h4>
+                            <p>Resíduos da colheita, podas e restos agroindustriais viram biofertilizantes líquidos e sólidos por meio de compostagem acelerada e biodigestão. Reduzimos em 70% a necessidade de fertilizantes químicos, devolvendo nutrientes ao solo. A economia circular gera renda extra com a venda de bioinsumos e evita a contaminação de lençóis freáticos. Na Agro Forte, 100% dos resíduos orgânicos são reaproveitados.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projetos -->
     <section id="projetos" class="projetos">
         <div class="container">
             <h2 class="section-title">Projetos em Destaque</h2>
             <div class="projetos-grid">
-                <div class="projeto-item">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" alt="Reflorestamento">
-                    <div class="projeto-info">
-                        <h3>Reflorestamento de Nascentes</h3>
-                        <p>Recuperação de 50 nascentes em áreas de produção agrícola.</p>
-                        <span class="projeto-status">Em andamento</span>
-                    </div>
-                </div>
-                <div class="projeto-item">
-                    <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=400&h=300&fit=crop" alt="Agricultura Regenerativa">
-                    <div class="projeto-info">
-                        <h3>Agricultura Regenerativa</h3>
-                        <p>Capacitação de 300 famílias em técnicas regenerativas.</p>
-                        <span class="projeto-status">Concluído</span>
-                    </div>
-                </div>
-                <div class="projeto-item">
-                    <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=400&h=300&fit=crop" alt="Bioenergia">
-                    <div class="projeto-info">
-                        <h3>Bioenergia no Campo</h3>
-                        <p>Implantação de biodigestores em 20 propriedades rurais.</p>
-                        <span class="projeto-status">Planejamento</span>
-                    </div>
-                </div>
+                <div class="projeto-item"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" alt="Reflorestamento"><div class="projeto-info"><h3>Reflorestamento de Nascentes</h3><p>Recuperação de 50 nascentes em áreas de produção agrícola.</p><span class="projeto-status">Em andamento</span></div></div>
+                <div class="projeto-item"><img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=400&h=300&fit=crop" alt="Agricultura Regenerativa"><div class="projeto-info"><h3>Agricultura Regenerativa</h3><p>Capacitação de 300 famílias em técnicas regenerativas.</p><span class="projeto-status">Concluído</span></div></div>
+                <div class="projeto-item"><img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=400&h=300&fit=crop" alt="Bioenergia"><div class="projeto-info"><h3>Bioenergia no Campo</h3><p>Implantação de biodigestores em 20 propriedades rurais.</p><span class="projeto-status">Planejamento</span></div></div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
@@ -151,47 +598,131 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contato" class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-leaf"></i> Agro Forte</h3>
-                    <p>Cultivando o presente, preservando o futuro.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
-                    <p><i class="fas fa-envelope"></i> contato@agroforte.com</p>
-                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
-                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Parceiros</h4>
-                    <ul>
-                        <li>Embrapa</li>
-                        <li>Senar</li>
-                        <li>Instituto Agro</li>
-                        <li>Sebrae</li>
-                    </ul>
-                </div>
+                <div class="footer-section"><h3><i class="fas fa-leaf"></i> Agro Forte</h3><p>Cultivando o presente, preservando o futuro.</p><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+                <div class="footer-section"><h4>Contato</h4><p><i class="fas fa-envelope"></i> contato@agroforte.com</p><p><i class="fas fa-phone"></i> (11) 9999-9999</p><p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p></div>
+                <div class="footer-section"><h4>Parceiros</h4><ul><li>Embrapa</li><li>Senar</li><li>Instituto Agro</li><li>Sebrae</li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Agro Forte - Todos os direitos reservados</p>
-                <p id="lastUpdate"></p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2024 Agro Forte - Todos os direitos reservados</p><p id="lastUpdate"></p></div>
         </div>
     </footer>
 
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="script.js"></script>
+    <script>
+        // ==================== FLIP CARD (GIRAR COM CLICK) ====================
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Impede que event bubbling feche flip acidentalmente ao clicar em textos internos
+                e.stopPropagation();
+                this.classList.toggle('flipped');
+            });
+        });
+
+        // Menu hamburguer
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if(hamburger) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll suave
+        window.scrollToSection = function(sectionId) {
+            const section = document.getElementById(sectionId);
+            if(section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Contador animado
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 180;
+        const startCounting = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let current = parseInt(counter.innerText);
+                    const increment = Math.ceil(target / 25);
+                    if(current < target) {
+                        current += increment;
+                        counter.innerText = current;
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+        // Intersection Observer para contar apenas quando visível
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    startCounting();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        const statsContainer = document.querySelector('.stats');
+        if(statsContainer) observer.observe(statsContainer);
+
+        // Back to top
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if(window.scrollY > 400) backBtn.classList.add('show');
+            else backBtn.classList.remove('show');
+        });
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Newsletter + Data
+        const form = document.getElementById('newsletterForm');
+        const msgDiv = document.getElementById('formMessage');
+        if(form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('emailInput').value.trim();
+                if(email && email.includes('@') && email.includes('.')) {
+                    msgDiv.innerHTML = '<span style="color:#c8e6b5;">✅ Inscrição confirmada! Obrigado por fazer parte do futuro sustentável.</span>';
+                    form.reset();
+                } else {
+                    msgDiv.innerHTML = '<span style="color:#ffbb86;">✉️ Por favor, insira um e-mail válido.</span>';
+                }
+                setTimeout(() => msgDiv.innerHTML = '', 4000);
+            });
+        }
+        const dataAtual = new Date();
+        document.getElementById('lastUpdate').innerHTML = `Última atualização: ${dataAtual.toLocaleDateString('pt-BR')}`;
+        
+        // Ajuste para garantir que cards não fiquem presos ao clicar em links sociais etc
+        document.querySelectorAll('.social-links a, .footer-section ul li').forEach(el => {
+            el.addEventListener('click', (e) => e.stopPropagation());
+        });
+        // Prevenir que clique no botão de inscrição propague flip
+        const subButton = document.querySelector('.input-group button');
+        if(subButton) subButton.addEventListener('click', (e) => e.stopPropagation());
+        
+        // pequena correção para números iniciais dos stats antes do observer ficar zerado (melhor UX)
+        counters.forEach(c => { c.innerText = '0'; });
+    </script>
 </body>
 </html>
